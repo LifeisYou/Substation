@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorText">#000000</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorTextSecondary">#BDBDBD</color>
+
+    <color name="bg_app">#F1F1F1</color>
+    <color name="bg_white">#FFFFFF</color>
+
+    <color name="newColorPrimary">#00BCD4</color>
+    <color name="newColorPrimaryDark">#0097A7</color>
+    <color name="newColorAccent">#00BCD4</color>
+    <color name="newTextIcons">#FFFFFF</color>
+    <color name="newDivider">#BDBDBD</color>
+    <color name="newPrimaryText">#212121</color>
+    <color name="newSecondAryText">#757575</color>
+    <color name="newColorTime">#2196F3</color>
+</resources>

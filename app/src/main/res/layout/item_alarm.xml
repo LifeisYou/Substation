@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:paddingRight="8dp">
+
+    <ImageView
+        android:id="@+id/iv_alarm_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="8dp"
+        android:contentDescription="alarm_type"
+        android:src="@drawable/alarm_green"/>
+
+
+    <TextView
+        android:id="@+id/tv_alarm_equipment"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/iv_alarm_type"
+        android:layout_toEndOf="@id/iv_alarm_type"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:text="智能设备IED-001"/>
+
+    <TextView
+        android:id="@+id/tv_alarm_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+        android:text="09:20"/>
+
+    <TextView
+        android:id="@+id/tv_alarm_message"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_toRightOf="@id/iv_alarm_type"
+        android:layout_toEndOf="@id/iv_alarm_type"
+        android:layout_below="@id/tv_alarm_equipment"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textSize="12sp"
+        android:textColor="@color/colorTextSecondary"
+        android:text="前置机1与AH01进线柜PMF720L的A网断开,前置机1与AH01进线柜PMF720L的A网断开."/>
+</RelativeLayout>

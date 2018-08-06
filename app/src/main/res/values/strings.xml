@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Substation</string>
+
+    <string name="cancel">再按一次，退出程序！</string>
+
+    <string name="server_ip">IP地址</string>
+    <string name="server_port">端口号</string>
+    <string name="submit">提交</string>
+    <string name="server_submit_msg">提交服务器信息成功后，应用会重新启动，请稍后！</string>
+
+    <string name="soft_name">智能运维</string>
+    <string name="soft_version">版本：2.0</string>
+    <string name="soft_introduction">该APP是配合本公司SOMS-8000运维管理系统的移动端管理工具，
+    主要功能是完成变电站基础运维管理，支持实时报警推送，实时数据报表查看，任务和人员的管理等。</string>
+    <string name="about_company">许昌智能继电器股份有限公司</string>
+    <string name="about_phone">服务热线:400-0374-655</string>
+    <string name="about_url">公司网址：www.xjpmf.com</string>
+    <string name="about_email">电子邮箱：znsc@xjpmf.com</string>
+    <string name="about_address">公司地址：河南省许昌市中原电气谷许昌智能科技大厦</string>
+</resources>
