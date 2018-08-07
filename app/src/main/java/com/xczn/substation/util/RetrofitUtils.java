@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @Comment
  */
 public class RetrofitUtils {
-    private static String baseUrl = null;
+    private static String baseUrl = "http://192.168.1.120:8100/";
     private static final int TIME_OUT=4;
     private Retrofit retrofit;
 

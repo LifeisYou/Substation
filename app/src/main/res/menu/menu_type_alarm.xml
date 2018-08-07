@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/type_notify"
+        android:title="@string/alarm_type_notify"
+        android:icon="@drawable/alarm_green"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/type_general"
+        android:title="@string/alarm_type_general"
+        android:icon="@drawable/alarm_yellow"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/type_abnormal"
+        android:title="@string/alarm_type_abnormal"
+        android:icon="@drawable/alarm_green"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/type_fault"
+        android:title="@string/alarm_type_fault"
+        android:icon="@drawable/alarm_yellow"
+        app:showAsAction="never"/>
+
+</menu>

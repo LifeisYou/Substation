@@ -43,7 +43,7 @@
         android:layout_below="@id/tv_alarm_equipment"
         android:gravity="center_vertical"
         android:maxLines="1"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textColor="@color/colorTextSecondary"
         android:text="前置机1与AH01进线柜PMF720L的A网断开,前置机1与AH01进线柜PMF720L的A网断开."/>
 </RelativeLayout>

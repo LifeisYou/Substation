@@ -2,6 +2,10 @@
     <string name="app_name">Substation</string>
 
     <string name="cancel">再按一次，退出程序！</string>
+    <string name="alarm_type_notify">告知</string>
+    <string name="alarm_type_general">一般</string>
+    <string name="alarm_type_abnormal">异常</string>
+    <string name="alarm_type_fault">事故</string>
 
     <string name="server_ip">IP地址</string>
     <string name="server_port">端口号</string>
