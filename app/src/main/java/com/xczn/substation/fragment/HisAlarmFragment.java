@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,8 +20,8 @@ import com.xczn.substation.entity.HisAlarmBean;
 import com.xczn.substation.listener.OnItemClickListener;
 import com.xczn.substation.request.SubstationService;
 import com.xczn.substation.util.RetrofitUtils;
-import com.xczn.substation.util.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -35,6 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 public class HisAlarmFragment extends BaseBackFragment {
 
     private HisAlarmAdapter adapter;
+    private List<HisAlarmBean> mHisAlarmBeans;
 
     public static HisAlarmFragment newInstance(){
         return new HisAlarmFragment();
@@ -44,6 +46,8 @@ public class HisAlarmFragment extends BaseBackFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        //hi
+        mHisAlarmBeans = new ArrayList<>();
         initView(view);
         initData();
         return view;
@@ -55,12 +59,38 @@ public class HisAlarmFragment extends BaseBackFragment {
         toolbar.setTitle("历史报警");
         toolbar.inflateMenu(R.menu.menu_type_alarm);
 
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.type_all://通知
+                        showHisAlarmType("all");
+                        break;
+                    case R.id.type_notify://通知
+                        showHisAlarmType("notify");
+                        break;
+                    case R.id.type_general://一般
+                        showHisAlarmType("general");
+                        break;
+                    case R.id.type_abnormal://异常
+                        showHisAlarmType("abnormal");
+                        break;
+                    case R.id.type_fault://错误
+                        showHisAlarmType("fault");
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
+
         adapter = new HisAlarmAdapter();
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view, RecyclerView.ViewHolder vh, Object obj) {
                 HisAlarmBean hiaAlarm = (HisAlarmBean) obj;
-                ToastUtils.showShortToast(_mActivity, hiaAlarm.getMessage());
+                start(HisAlarmDetailFragment.newInstance(hiaAlarm.getMessage()));
             }
         });
         RecyclerView rv_main = view.findViewById(R.id.rv_main);
@@ -72,14 +102,15 @@ public class HisAlarmFragment extends BaseBackFragment {
     @SuppressLint("CheckResult")
     private void initData() {
         RetrofitUtils.getRetrofit().create(SubstationService.class)
-                .getHisAlarm()
+                .getHisAlarms()
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<HisAlarmBean>>() {
                                @Override
                                public void accept(List<HisAlarmBean> hisAlarmBeans) {
-                                   adapter.setData(hisAlarmBeans);
+                                   mHisAlarmBeans = hisAlarmBeans;
+                                   adapter.setData(mHisAlarmBeans);
                                }
                            },
                         new Consumer<Throwable>() {
@@ -89,5 +120,17 @@ public class HisAlarmFragment extends BaseBackFragment {
                         });
     }
 
-
+    private void showHisAlarmType(String type) {
+        List<HisAlarmBean> selectedHisAlarmBeans = new ArrayList<>();
+        if (type.equals("all")) {
+            selectedHisAlarmBeans = mHisAlarmBeans;
+        } else {
+            for (HisAlarmBean hisAlarmBean : mHisAlarmBeans) {
+                if (hisAlarmBean.getType().equals(type)) {
+                    selectedHisAlarmBeans.add(hisAlarmBean);
+                }
+            }
+        }
+        adapter.setData(selectedHisAlarmBeans);
+    }
 }

@@ -1,5 +1,6 @@
 package com.xczn.substation.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -24,13 +25,11 @@ import java.util.zip.Inflater;
  */
 public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoHolder> {
 
-    private LayoutInflater mInflater;
+    private Context context;
     private List<String> list = new ArrayList<>();
     private OnItemClickListener mOnItemClickListener;
 
-    public DemoAdapter(FragmentActivity activity) {
-        this.mInflater = LayoutInflater.from(activity);
-    }
+    public DemoAdapter() {}
 
     public void setData(List<String> list){
         this.list.clear();
@@ -41,7 +40,8 @@ public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoHolder> {
     @NonNull
     @Override
     public DemoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_alarm, parent, false);
+        this.context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.item_alarm, parent, false);
         final DemoHolder holder = new DemoHolder(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

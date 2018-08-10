@@ -1,5 +1,6 @@
 package com.xczn.substation.request;
 
+import com.xczn.substation.entity.AlarmBean;
 import com.xczn.substation.entity.ChartMenuBean;
 import com.xczn.substation.entity.HisAlarmBean;
 
@@ -15,7 +16,10 @@ import retrofit2.http.GET;
  */
 public interface SubstationService {
     @GET("hisalarm")
-    Observable<List<HisAlarmBean>> getHisAlarm();
+    Observable<List<HisAlarmBean>> getHisAlarms();
+
+    @GET("hisalarm")
+    Observable<List<AlarmBean>> getAlarms();
 
     @GET("chartmenus")
     Observable<List<ChartMenuBean>> getChartMenus();

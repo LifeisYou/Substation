@@ -2,7 +2,8 @@ package com.xczn.substation.mqtt;
 
 import android.content.Context;
 
-import org.eclipse.paho.android.service.MqttAndroidClient;
+import com.xczn.substation.util.ToastUtils;
+
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -15,21 +16,47 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class AlarmActionListener implements IMqttActionListener{
 
-    private final Context context;
-    private final MqttAndroidClient client;
+    private  Context context;
+    private Action action;
+    enum Action {
+        /**
+         * Connect Action
+         **/
+        CONNECT,
+        /**
+         * Disconnect Action
+         **/
+        DISCONNECT,
+        /**
+         * Subscribe Action
+         **/
+        SUBSCRIBE,
+        /**
+         * Publish Action
+         **/
+        PUBLISH
+    }
 
-    public AlarmActionListener(Context context, MqttAndroidClient client) {
+    AlarmActionListener(Context context, Action action) {
         this.context = context;
-        this.client = client;
+        this.action = action;
     }
 
     @Override
     public void onSuccess(IMqttToken asyncActionToken) {
-        subscribeToTopic();
-        try {
-            client.subscribe("Alarm", 2);
-        } catch (MqttException e) {
-            e.printStackTrace();
+        switch (action) {
+            case CONNECT:
+                connect();
+                break;
+            case DISCONNECT:
+                //disconnect();
+                break;
+            case SUBSCRIBE:
+                subscribe();
+                break;
+            case PUBLISH:
+                //publish();
+                break;
         }
     }
 
@@ -38,23 +65,17 @@ public class AlarmActionListener implements IMqttActionListener{
         exception.printStackTrace();
     }
 
-    public void subscribeToTopic(){
+    private void connect() {
+        ToastUtils.showShortToast(context, "Client Connecting ");
+        //连接成功后，订阅报警
         try {
-            client.subscribe(client.getClientId(), 2, null, new IMqttActionListener() {
-                @Override
-                public void onSuccess(IMqttToken asyncActionToken) {
-//                    addToHistory("Subscribed!");
-                }
-
-                @Override
-                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-//                    addToHistory("Failed to subscribe");
-                }
-            });
-
-        } catch (MqttException ex){
-            System.err.println("Exception whilst subscribing");
-            ex.printStackTrace();
+            MqttUtils.getInstance().subscribe("text", 2);
+        } catch (MqttException e) {
+            e.printStackTrace();
         }
+    }
+
+    private void subscribe() {
+        ToastUtils.showShortToast(context, "Client Subscribing ");
     }
 }

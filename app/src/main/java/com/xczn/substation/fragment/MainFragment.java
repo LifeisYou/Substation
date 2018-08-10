@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.xczn.substation.R;
 import com.xczn.substation.adapter.DemoAdapter;
 import com.xczn.substation.adapter.MenuAdapter;
+import com.xczn.substation.base.BaseMainFragment;
 import com.xczn.substation.entity.MenuBean;
 import com.xczn.substation.listener.OnItemClickListener;
 import com.xczn.substation.util.ToastUtils;
@@ -29,7 +30,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * @Date 2018/8/3 0003
  * @Comment
  */
-public class MainFragment extends SupportFragment {
+public class MainFragment extends BaseMainFragment {
 
     private MenuAdapter adapter;
 

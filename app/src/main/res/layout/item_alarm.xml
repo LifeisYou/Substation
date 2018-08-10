@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:paddingRight="8dp">
+    android:paddingRight="8dp"
+    android:background="@color/bg_white">
 
     <ImageView
         android:id="@+id/iv_alarm_type"

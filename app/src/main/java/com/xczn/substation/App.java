@@ -1,8 +1,12 @@
 package com.xczn.substation;
 
 import android.app.Application;
+import android.content.Context;
 
+import com.xczn.substation.mqtt.MqttUtils;
 import com.xczn.substation.util.SharedPreferencesUtils;
+
+import org.eclipse.paho.client.mqttv3.MqttException;
 
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
@@ -41,9 +45,20 @@ public class App extends Application {
                 })
                 .install();
         SharedPreferencesUtils.init(this);
+
+        try {
+            MqttUtils.getInstance().connect(getAppContext(), "tcp://192.168.1.120:1883", "test");
+//            MqttUtils.getInstance().subscribe("text", 2); //异步操作，需要等连接完成，才能订阅，需放在
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Application getApplication() {
         return mApplication;
+    }
+
+    public static Context getAppContext() {
+        return mApplication.getApplicationContext();
     }
 }

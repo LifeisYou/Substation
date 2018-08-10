@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/type_all"
+        android:title="@string/alarm_type_all"
+        android:icon="@drawable/alarm_green"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/type_notify"
         android:title="@string/alarm_type_notify"
         android:icon="@drawable/alarm_green"

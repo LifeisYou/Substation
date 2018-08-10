@@ -22,12 +22,6 @@ public class AboutFragment extends BaseBackFragment {
         return new AboutFragment();
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        mArticle = getArguments().getParcelable(ARG_ITEM);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,12 +34,5 @@ public class AboutFragment extends BaseBackFragment {
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("关于我们");
         initToolbarNav(toolbar);
-    }
-
-
-    public void onDestroyView() {
-        super.onDestroyView();
-        _mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        hideSoftInput();
     }
 }

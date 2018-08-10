@@ -19,9 +19,6 @@ import com.xczn.substation.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.BackingStoreException;
-
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * @Author zhangxiao
@@ -50,7 +47,7 @@ public class DemoFragment extends BaseBackFragment {
         initToolbarNav(toolbar);
         toolbar.inflateMenu(R.menu.main);
 
-        adapter = new DemoAdapter(_mActivity);
+        adapter = new DemoAdapter();
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view, RecyclerView.ViewHolder vh, Object obj) {
